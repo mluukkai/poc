@@ -6,11 +6,15 @@ sequenceDiagram
     participant countryRouter
 
     entry->>riskData: getRiskData(data)
+    activate riskData
     riskData ->>+ riskData: getMultilateralRisks(countries, formData)
+    activate riskData
     riskData ->> countryRouter: getCountryData
     riskData ->> countryRisks: getCountryRisks
-    riskData ->>- riskData: lol
-
+    deactivate activate riskData
+    riskData ->> countryRouter: getCountryData
+    riskData ->> countryRisks: getCountryRisks
+    deactivate activate riskData
 ```
 
 ```mermaid
