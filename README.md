@@ -1,9 +1,15 @@
 ```mermaid
 sequenceDiagram
     participant entry
-    participant algorithm
+    participant riskData
+    participant countryRisks
+    participant countryRouter
 
-    entry->>algorithm: createRiskData(data) 
+    entry->>riskData: getRiskData(data)
+    riskData ->> riskData: getMultilateralRisks(countries, formData)
+    riskData ->> countryRouter: getCountryData
+    riskData ->> countryRisks: getCountryRisks
+
 ```
 
 ```mermaid
