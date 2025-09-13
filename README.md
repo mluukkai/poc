@@ -11,7 +11,7 @@ sequenceDiagram
     activate riskData
     riskData ->> countryRouter: getCountryData
     riskData ->> countryRisks: getCountryRisks
-    deactivate activate riskData
+    deactivate riskData
     riskData ->> countryRouter: getCountryData
     riskData ->> countryRisks: getCountryRisks
     deactivate riskData
