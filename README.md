@@ -9,11 +9,12 @@ sequenceDiagram
     activate riskData
     riskData ->>+ riskData: getMultilateralRisks(countries, formData)
     activate riskData
-    riskData ->> countryRouter: getCountryData
-    riskData ->> countryRisks: getCountryRisks
+    Note right of riskData: for each country
+    riskData ->> countryRouter: getCountryData(code)
+    riskData ->> countryRisks: getCountryRisks(countryData, formData
     deactivate riskData
-    riskData ->> countryRouter: getCountryData
-    riskData ->> countryRisks: getCountryRisks
+    riskData ->> countryRouter: getCountryData(code)
+    riskData ->> countryRisks: getCountryRisks(countryData, formData
     deactivate riskData
 ```
 
