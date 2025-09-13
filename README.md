@@ -1,5 +1,13 @@
 ```mermaid
 sequenceDiagram
+    participant entry
+    participant algorithm
+
+    entry->>algorithm: createRiskData(data) 
+```
+
+```mermaid
+sequenceDiagram
     participant browser
     participant server
 
