@@ -6,7 +6,7 @@ sequenceDiagram
     participant countryRouter
 
     entry->>riskData: getRiskData(data)
-    riskData ->> riskData: getMultilateralRisks(countries, formData)
+    riskData ->>+ riskData: getMultilateralRisks(countries, formData)
     riskData ->> countryRouter: getCountryData
     riskData ->> countryRisks: getCountryRisks
 
