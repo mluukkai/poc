@@ -9,6 +9,7 @@ sequenceDiagram
     riskData ->>+ riskData: getMultilateralRisks(countries, formData)
     riskData ->> countryRouter: getCountryData
     riskData ->> countryRisks: getCountryRisks
+    riskData ->>- riskData
 
 ```
 
