@@ -11,10 +11,10 @@ sequenceDiagram
     activate riskData
     Note right of riskData: for each country
     riskData ->> countryRouter: getCountryData(code)
-    riskData ->> countryRisks: getCountryRisks(countryData, formData
+    riskData ->> countryRisks: getCountryRisks(countryData, formData)
     deactivate riskData
     riskData ->> countryRouter: getCountryData(code)
-    riskData ->> countryRisks: getCountryRisks(countryData, formData
+    riskData ->> countryRisks: getCountryRisks(countryData, formData)
     deactivate riskData
 ```
 
