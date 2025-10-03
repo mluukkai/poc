@@ -1,5 +1,6 @@
 ```mermaid
 sequenceDiagram
+  participant index
   participant dbSetup
   participant db
   participant statute
@@ -7,7 +8,9 @@ sequenceDiagram
   participant finlex
   participant psql
 
+  index ->> dbSetup: runSetup
   dbSetup ->> dbSetup: initDatabase
+  activate dbSetup
   dbSetup ->> db: DbReady
   dbSetup ->>+ db: dbIsUpToDate
   Note right of db: for each year
@@ -28,6 +31,7 @@ sequenceDiagram
   load ->> load: parseXML
   load ->> statute: setStatute(parsed_statute)
   statute ->> psql: update DB
+  deactivate dbSetup
 ```
 
 
