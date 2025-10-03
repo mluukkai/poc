@@ -33,8 +33,9 @@ sequenceDiagram
   load ->> statute: setStatute(parsed_statute)
   statute ->> psql: update DB
   deactivate dbSetup
-  db ->> search: deleteCollection
+  dbSetup ->> search: deleteCollection
   search->>ts: collection_delete
+  dbSetup ->> search: syncStatutes
 ```
 
 
