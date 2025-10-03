@@ -38,6 +38,11 @@ sequenceDiagram
   dbSetup ->> search: deleteCollection
   search ->> ts: collection_delete
   dbSetup ->> search: syncStatutes
+  search ->> ts: collection_create
+  Note right of db: for each year
+  search ->> psql: query DB (statutes of year)
+  search ->> search: upsertWithRetry
+  search ->> ts: entries_create
   deactivate dbSetup
 ```
 
