@@ -20,7 +20,7 @@ sequenceDiagram
   db ->> db: findMissingStatutes(year)
   db -->> dbSetup: (updated, statutes, judgements)
   deactivate db
-  Note right of db: if not updated
+  Note left of db: if not updated
   dbSetup ->> db: fillDb
   activate db
   Note right of db: for each statute
