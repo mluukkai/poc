@@ -16,11 +16,18 @@ sequenceDiagram
   db ->> load: listStatutesByYear(year)
   load ->> finlex: HTTP GET
   db ->> statute: getStatuteCountByYear(year)
-  statute ->> psql: query
+  statute ->> psql: query DB
   db ->> db: findMissingStatutes(year)
   db -->> dbSetup: (updated, statutes, judgements)
   deactivate db
+  Note right of db: if not updated
   dbSetup ->> db: fillDb
+  activate db
+  Note right of db: for each statute
+  db ->> load: setSingleStatute(statute_url)
+  load ->> load: parseXML
+  load ->> statute: setStatute(parsed_statute)
+  statute ->> psql: update DB
 ```
 
 
