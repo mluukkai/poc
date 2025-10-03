@@ -5,6 +5,7 @@ sequenceDiagram
   participant db
   participant statute
   participant load
+  participant search
   participant psql
   participant ts
   participant finlex
