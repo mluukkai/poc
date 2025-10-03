@@ -1,5 +1,5 @@
 ```mermaid
-stateDiagram
+sequenceDiagram
   participant dbSetup
   participant db
   participant statute
