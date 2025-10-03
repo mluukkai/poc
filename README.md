@@ -36,7 +36,6 @@ sequenceDiagram
   deactivate db
   Note left of db: if not updated
   dbSetup ->> db: fillDb
-  activate db
   Note right of db: for each statute
   db ->> load: setSingleStatute(statute_url)
   load ->> load: parseXML
