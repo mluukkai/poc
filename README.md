@@ -3,6 +3,7 @@ sequenceDiagram
   participant dbSetup
   participant db
   participant statute
+  participant load
   participant finlex
   participant psql
 
