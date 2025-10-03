@@ -35,7 +35,7 @@ sequenceDiagram
   statute ->> psql: update DB
   deactivate dbSetup
   dbSetup ->> search: deleteCollection
-  search->>ts: collection_delete
+  search ->> ts: collection_delete
   dbSetup ->> search: syncStatutes
   deactivate dbSetup
 ```
