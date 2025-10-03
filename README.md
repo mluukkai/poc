@@ -24,6 +24,12 @@ sequenceDiagram
   db ->> statute: getStatuteCountByYear(year)
   statute ->> psql: query DB
   db ->> db: findMissingStatutes(year)
+  activate db
+  db ->> load : listStatutesByYear(year)
+  db ->> statute: getStatutesByYear(year)
+  statute ->> psql: query
+  load ->> finlex: HTTP GET
+  deactivate db
   db -->> dbSetup: (updated, statutes, judgements)
   deactivate db
   Note left of db: if not updated
@@ -39,14 +45,12 @@ sequenceDiagram
   search ->> ts: collection_delete
   dbSetup ->> search: syncStatutes
   search ->> ts: collection_create
-  Note right of db: for each year
+  Note right of search: for each year
   search ->> psql: query DB (statutes of year)
   search ->> search: upsertWithRetry
   search ->> ts: entries_create
   deactivate dbSetup
 ```
-
-
 
 ```mermaid
 sequenceDiagram
