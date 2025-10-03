@@ -10,6 +10,7 @@ sequenceDiagram
   participant ts
 
   index ->> dbSetup: runSetup
+  activate dbSetup
   dbSetup ->> dbSetup: initDatabase
   activate dbSetup
   dbSetup ->> db: DbReady
@@ -36,6 +37,7 @@ sequenceDiagram
   dbSetup ->> search: deleteCollection
   search->>ts: collection_delete
   dbSetup ->> search: syncStatutes
+  deactivate dbSetup
 ```
 
 
