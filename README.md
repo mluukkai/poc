@@ -5,9 +5,9 @@ sequenceDiagram
   participant db
   participant statute
   participant load
-  participant finlex
   participant psql
   participant ts
+  participant finlex
 
   index ->> dbSetup: runSetup
   activate dbSetup
