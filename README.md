@@ -1,4 +1,26 @@
 ```mermaid
+stateDiagram
+  participant dbSetup
+  participant db
+  participant statute
+
+  dbSetup ->> dbSetup: initDatabase
+  dbSetup ->> db: DbReady
+  dbSetup ->>+ db: dbIsUpToDate
+  Note right of db: for each year
+  activate db
+  db ->> db: compareStatuteCount(year)
+  db ->> load: listStatutesByYear(year)
+  db ->> statute: getStatuteCountByYear(year)
+  db ->> db: findMissingStatutes(year)
+  db -->> dbSetup: (updated, statutes, judgements)
+  deactivate db
+  dbSetup ->> db: fillDb
+```
+
+
+
+```mermaid
 sequenceDiagram
     participant entryRouter
     participant riskData
