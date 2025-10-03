@@ -7,6 +7,7 @@ sequenceDiagram
   participant load
   participant finlex
   participant psql
+  participant ts
 
   index ->> dbSetup: runSetup
   dbSetup ->> dbSetup: initDatabase
@@ -32,6 +33,8 @@ sequenceDiagram
   load ->> statute: setStatute(parsed_statute)
   statute ->> psql: update DB
   deactivate dbSetup
+  db ->> search: deleteCollection
+  search->>ts: collection_delete
 ```
 
 
