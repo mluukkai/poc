@@ -4,6 +4,7 @@ sequenceDiagram
   participant db
   participant statute
   participant finlex
+  participant psql
 
   dbSetup ->> dbSetup: initDatabase
   dbSetup ->> db: DbReady
@@ -14,6 +15,7 @@ sequenceDiagram
   db ->> load: listStatutesByYear(year)
   load ->> finlex: HTTP GET
   db ->> statute: getStatuteCountByYear(year)
+  statute ->> psql: query
   db ->> db: findMissingStatutes(year)
   db -->> dbSetup: (updated, statutes, judgements)
   deactivate db
